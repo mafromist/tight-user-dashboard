@@ -6,6 +6,7 @@ import i18n from '@/plugins/i18n'
 import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useUserStore } from '@/stores/user'
+import SidebarHeader from './SidebarHeader.vue'
 
 const router = useRouter()
 const route = useRoute()
@@ -59,17 +60,7 @@ const { t } = useI18n()
 
 <template>
   <aside class="tw-bg-purple-100 tw-border-r tw-p-4 tw-shadow-md tw-h-full tw-flex tw-flex-col">
-    <!-- 🔷 Brand / Logo -->
-    <div class="tw-text-2xl tw-font-bold tw-text-purple-800 tw-mb-6 text-center">TightUser</div>
-
-    <!-- 📋 Conditional Menu Item -->
-    <div
-      v-if="route.name === 'UserDetails'"
-      class="tw-text-purple-700 tw-font-medium tw-text-center tw-mb-6"
-    >
-      {{ t('dashboard.userTable') }}
-    </div>
-
+    <SidebarHeader :isDarkTheme="isDarkTheme" :toggleDarkMode="toggleDarkMode" />
     <!-- 👤 User Details or Dashboard Link -->
     <template v-if="route.path.includes('user') && currentUser">
       <Card role="user-details" class="tw-flex tw-items-center tw-mt-4 tw-pt-4 tw-shadow-none">
@@ -108,17 +99,6 @@ const { t } = useI18n()
           @click="changeLanguage(lang.code)"
         />
       </div>
-    </div>
-
-    <!-- 🌓 Dark mode toggle -->
-    <div class="tw-mb-4 text-center">
-      <Button
-        type="button"
-        @click="toggleDarkMode"
-        rounded
-        :icon="isDarkTheme ? 'pi pi-moon' : 'pi pi-sun'"
-        severity="secondary"
-      />
     </div>
   </aside>
 </template>
