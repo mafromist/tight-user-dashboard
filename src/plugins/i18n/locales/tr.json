@@ -1,0 +1,12 @@
+{
+  "dashboard": {
+    "title": "Gösterge Paneli",
+    "userTable": "Kullanıcı Tablosu"
+  },
+  "user": {
+    "details": "Kullanıcı Detayları",
+    "name": "İsim",
+    "email": "E-posta",
+    "phone": "Telefon"
+  }
+}

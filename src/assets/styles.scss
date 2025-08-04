@@ -1,0 +1,9 @@
+@use 'primeicons/primeicons.css';
+@use 'global.scss';
+@use 'colors.scss';
+
+@use 'components/postSlider.scss';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

@@ -1,0 +1,54 @@
+:root {
+  /* 🌈 Primary Electric Violet Scale */
+  --p-electric-violet-50: #faf5ff;
+  --p-electric-violet-100: #f4e8ff;
+  --p-electric-violet-200: #ebd5ff;
+  --p-electric-violet-300: #dbb4fe;
+  --p-electric-violet-400: #c384fc;
+  --p-electric-violet-500: #aa55f7;
+  --p-electric-violet-600: #9333ea;
+  --p-electric-violet-700: #7c22ce;
+  --p-electric-violet-800: #6821a8;
+  --p-electric-violet-900: #541c87;
+  --p-electric-violet-950: #380764;
+
+  /* If you need more like this */
+  --p-primary-100: var(--p-electric-violet-100);
+  --p-primary-200: var(--p-electric-violet-200);
+  --p-primary-300: var(--p-electric-violet-300);
+  --p-primary-400: var(--p-electric-violet-400);
+  --p-primary-500: var(--p-electric-violet-500);
+  --p-primary-600: var(--p-electric-violet-600);
+  --p-primary-700: var(--p-electric-violet-700);
+  --p-primary-800: var(--p-electric-violet-800);
+  --p-primary-900: var(--p-electric-violet-900);
+
+  /* 🟣 Active Primary Assignments */
+  --p-primary-color: var(--p-electric-violet-600);
+  --p-primary-color-text: #ffffff;
+  --p-primary-light-color: var(--p-electric-violet-300);
+  --p-primary-dark-color: var(--p-electric-violet-800);
+
+  /* ✨ Highlight + Buttons */
+  --p-highlight-bg: var(--p-primary-color);
+  --p-highlight-text-color: #ffffff;
+
+  --p-focus-ring: 0 0 0 0.2rem rgba(147, 51, 234, 0.4);
+  --p-button-bg: var(--p-primary-color);
+  --p-button-text: var(--p-primary-color-text);
+  --p-button-border: var(--p-primary-color);
+
+  /* 🧾 Inputs */
+  --p-input-border-color: var(--p-electric-violet-500);
+  --p-input-focus-border-color: var(--p-primary-color);
+  --p-input-hover-border-color: var(--p-primary-dark-color);
+
+  /* ✅ Other Elements */
+  --p-checkbox-border-color: var(--p-primary-dark-color);
+  --p-radio-border-color: var(--p-primary-dark-color);
+
+  --p-link-color: var(--p-primary-color);
+  --p-link-hover-color: var(--p-primary-dark-color);
+
+  --p-splitter-color: var(--p-primary-color);
+}

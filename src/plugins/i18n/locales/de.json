@@ -1,0 +1,12 @@
+{
+  "dashboard": {
+    "title": "Dashboard",
+    "userTable": "Benutzertabelle"
+  },
+  "user": {
+    "details": "Benutzerdetails",
+    "name": "Name",
+    "email": "E-Mail",
+    "phone": "Telefon"
+  }
+}

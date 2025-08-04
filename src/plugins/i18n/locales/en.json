@@ -1,0 +1,17 @@
+{
+  "dashboard": {
+    "title": "Dashboard",
+    "userTable": "User Table"
+  },
+  "user": {
+    "details": "User Details",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone"
+  },
+  "pageTitles": {
+    "Dashboard": "Dashboard",
+    "User Details": "User Details",
+    "Page Not Found": "Page Not Found"
+  }
+}
