@@ -16,13 +16,13 @@ onMounted(async () => {
 <template>
   <div>
     <div class="tw-flex tw-justify-between tw-mx-4 tw-text-purple-600">
-      <h1>User List</h1>
-      <p class="tw-text-lg tw-font-bold">Total Users: {{ users.length }}</p>
+      <h1>{{ $t('user.list') }}</h1>
+      <p class="tw-text-lg tw-font-bold">{{ $t('user.totalUsers') }}: {{ users.length }}</p>
     </div>
     <section v-if="users.length">
       <UserTable :users="users" />
     </section>
-    <div v-else>Loading users...</div>
+    <div v-else>{{ $t('user.loadingUsers') }}</div>
   </div>
 </template>
 

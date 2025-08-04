@@ -2,7 +2,7 @@
 <template>
   <header class="tw-p-4 tw-border-b tw-border-gray-200 dark:tw-border-gray-700">
     <div class="tw-flex tw-justify-between">
-      <div class="tw-text-2xl tw-font-bold tw-text-purple-800 tw-mb-6 text-center">TightUser</div>
+      <div class="tw-text-2xl tw-font-bold tw-text-purple-800 tw-mb-6 text-center">{{ $t('common.appName') }}</div>
       <Button
         type="button"
         @click="toggleDarkMode"
@@ -12,12 +12,13 @@
       />
     </div>
 
-    <div
+    <RouterLink
       v-if="route.name === 'UserDetails'"
-      class="tw-text-purple-700 dark:tw-text-purple-400 tw-font-medium tw-text-center tw-mb-4"
+      :to="`/${route.params.locale}/dashboard`"
+      class="tw-no-underline tw-text-purple-700 dark:tw-text-purple-400 tw-font-medium tw-text-center tw-mb-4 hover:underline"
     >
       {{ t('dashboard.userTable') }}
-    </div>
+    </RouterLink>
   </header>
 </template>
 

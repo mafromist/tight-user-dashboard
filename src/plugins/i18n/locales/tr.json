@@ -7,6 +7,52 @@
     "details": "Kullanıcı Detayları",
     "name": "İsim",
     "email": "E-posta",
-    "phone": "Telefon"
+    "phone": "Telefon",
+    "list": "Kullanıcı Listesi",
+    "totalUsers": "Toplam Kullanıcı",
+    "loadingUsers": "Kullanıcılar yükleniyor...",
+    "notFound": "Kullanıcı bulunamadı.",
+    "backToTable": "Kullanıcı Tablosuna Dön",
+    "goToDetails": "Kullanıcı Detaylarına Git",
+    "searchByName": "İsme göre ara",
+    "noUsersFound": "Kullanıcı bulunamadı.",
+    "loadingData": "Kullanıcı verileri yükleniyor. Lütfen bekleyin."
+  },
+  "posts": {
+    "createNew": "Yeni Gönderi Oluştur",
+    "shareThoughts": "Paylaşmak istediğin bir şey var mı? Düşüncelerini yayınlamak için aşağıdaki formu doldur.",
+    "whatsOnMind": "Bugün aklında ne var?",
+    "startWriting": "Çekici bir başlık ve anlamlı bir mesaj girerek başla.",
+    "postTitle": "Gönderi Başlığı",
+    "postContent": "Gönderi İçeriği",
+    "titlePlaceholder": "örn. Tayland'dan Seyahat Notları",
+    "contentPlaceholder": "Deneyimlerini, düşüncelerini veya sorularını paylaş...",
+    "publish": "Yayınla",
+    "yourPosts": "Gönderileriniz",
+    "readMore": "Devamını Oku",
+    "backToPosts": "Gönderilere Dön",
+    "showAll": "Tümünü Göster",
+    "showLast3": "Son 3 Gönderiyi Göster",
+    "fullPost": "Tam Gönderi",
+    "new": "YENİ",
+    "showing": "Gösteriliyor",
+    "of": "toplam",
+    "posts": "gönderi"
+  },
+  "common": {
+    "clear": "Temizle",
+    "chooseLanguage": "Dilinizi Seçin",
+    "appName": "TightUser",
+    "cancel": "İptal",
+    "delete": "Sil"
+  },
+  "confirmDialog": {
+    "deletePost": "Bu gönderiyi silmek istediğinizden emin misiniz?",
+    "deleteHeader": "Silme Onayı"
+  },
+  "pageTitles": {
+    "Dashboard": "Gösterge Paneli",
+    "User Details": "Kullanıcı Detayları",
+    "Page Not Found": "Sayfa Bulunamadı"
   }
 }

@@ -41,14 +41,8 @@ const languages = [
 ]
 
 const changeLanguage = (code) => {
-  const fullLocale = {
-    tr: 'tr-TR',
-    en: 'en-US',
-    de: 'de-DE',
-  }[code]
-
-  localeStore.setLocale(fullLocale)
-  i18n.global.locale.value = fullLocale
+  localeStore.setLocale(code)
+  i18n.global.locale.value = code
 
   // Replace just the locale in the current path
   const path = route.fullPath.replace(/^\/[a-z]{2}/, `/${code}`)
@@ -59,7 +53,9 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <aside class="tw-bg-purple-100 tw-border-r tw-p-4 tw-shadow-md tw-h-full tw-flex tw-flex-col">
+  <aside
+    class="tw-bg-purple-100 tw-border-r tw-p-4 tw-shadow-md tw-h-full tw-flex tw-flex-col tw-justify-between"
+  >
     <SidebarHeader :isDarkTheme="isDarkTheme" :toggleDarkMode="toggleDarkMode" />
     <!-- 👤 User Details or Dashboard Link -->
     <template v-if="route.path.includes('user') && currentUser">
@@ -80,22 +76,16 @@ const { t } = useI18n()
       </Card>
     </template>
 
-    <template v-else>
-      <h2 class="tw-text-xl tw-font-bold tw-mb-4">{{ t('dashboard.title') }}</h2>
-      <RouterLink to="/dashboard" class="tw-text-blue-600 hover:underline">
-        {{ t('dashboard.userTable') }}
-      </RouterLink>
-    </template>
-
-    <!-- 🌍 Language switcher at bottom -->
-    <div class="tw-mt-auto tw-mb-10 tw-border-t tw-pt-4 tw-border-gray-300">
-      <p class="tw-text-purple-600 tw-font-bold tw-mb-2">Choose Your Language</p>
-      <div class="tw-flex">
+    <div
+      class="tw-flex tw-justify-center tw-items-center tw-mb-10 tw-border-t tw-pt-4 tw-border-gray-300"
+    >
+      <p class="tw-text-purple-600 tw-font-bold tw-mb-2">{{ $t('common.chooseLanguage') }}</p>
+      <div class="">
         <Button
           v-for="lang in languages"
           :key="lang.code"
           :label="lang.label"
-          class="!tw-bg-transparent !tw-border-none tw-text-lg"
+          class="tw-bg-transparent tw-border-none tw-text-lg"
           @click="changeLanguage(lang.code)"
         />
       </div>

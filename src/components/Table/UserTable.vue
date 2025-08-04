@@ -1,9 +1,10 @@
 <script setup>
 import { FilterMatchMode, FilterOperator } from '@primevue/core/api'
 import { onBeforeMount, ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 
 const router = useRouter()
+const route = useRoute()
 
 const props = defineProps({
   users: {
@@ -44,7 +45,7 @@ const clearFilter = () => {
 }
 
 const goToUserDetail = (id) => {
-  router.push({ name: 'UserDetails', params: { id } })
+  router.push({ name: 'UserDetails', params: { locale: route.params.locale, id } })
 }
 </script>
 
@@ -66,15 +67,15 @@ const goToUserDetail = (id) => {
             v-if="filters"
             type="button"
             icon="pi pi-filter-slash"
-            label="Clear"
+:label="$t('common.clear')"
             outlined
             @click="clearFilter()"
           />
         </div>
       </template>
-      <template #empty> No users found. </template>
-      <template #loading> Loading users data. Please wait. </template>
-      <Column field="name" header="Name" style="min-width: 10rem">
+      <template #empty> {{ $t('user.noUsersFound') }} </template>
+      <template #loading> {{ $t('user.loadingData') }} </template>
+      <Column field="name" :header="$t('user.name')" style="min-width: 10rem">
         <template #body="{ data }">
           <div class="tw-flex tw-items-center tw-justify-between">
             <div class="tw-flex tw-items-center">
@@ -92,7 +93,7 @@ const goToUserDetail = (id) => {
               <h3 class="tw-m-6">{{ data.name }}</h3>
             </div>
             <Button
-              :label="'Go to User Details'"
+:label="$t('user.goToDetails')"
               class="p-button-text tw-bold"
               icon="pi pi-user"
               @click="goToUserDetail(data.id)"
@@ -100,7 +101,7 @@ const goToUserDetail = (id) => {
           </div>
         </template>
         <template #filter="{ filterModel }">
-          <InputText v-model="filterModel.value" type="text" placeholder="Search by name" />
+          <InputText v-model="filterModel.value" type="text" :placeholder="$t('user.searchByName')" />
         </template>
       </Column>
     </DataTable>

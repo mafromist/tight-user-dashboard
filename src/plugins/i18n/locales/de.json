@@ -7,6 +7,52 @@
     "details": "Benutzerdetails",
     "name": "Name",
     "email": "E-Mail",
-    "phone": "Telefon"
+    "phone": "Telefon",
+    "list": "Benutzerliste",
+    "totalUsers": "Benutzer insgesamt",
+    "loadingUsers": "Benutzer werden geladen...",
+    "notFound": "Benutzer nicht gefunden.",
+    "backToTable": "Zurück zur Benutzertabelle",
+    "goToDetails": "Zu Benutzerdetails gehen",
+    "searchByName": "Nach Name suchen",
+    "noUsersFound": "Keine Benutzer gefunden.",
+    "loadingData": "Benutzerdaten werden geladen. Bitte warten."
+  },
+  "posts": {
+    "createNew": "Neuen Beitrag erstellen",
+    "shareThoughts": "Haben Sie etwas zu teilen? Füllen Sie das Formular unten aus, um Ihre Gedanken zu veröffentlichen.",
+    "whatsOnMind": "Was beschäftigt Sie heute?",
+    "startWriting": "Beginnen Sie mit einem einprägsamen Titel und einer bedeutungsvollen Nachricht.",
+    "postTitle": "Beitragstitel",
+    "postContent": "Beitragsinhalt",
+    "titlePlaceholder": "z.B. Reisenotizen aus Thailand",
+    "contentPlaceholder": "Teilen Sie Ihre Erfahrungen, Gedanken oder Fragen...",
+    "publish": "Veröffentlichen",
+    "yourPosts": "Ihre Beiträge",
+    "readMore": "Mehr lesen",
+    "backToPosts": "Zurück zu Beiträgen",
+    "showAll": "Alle anzeigen",
+    "showLast3": "Letzte 3 Beiträge anzeigen",
+    "fullPost": "Vollständiger Beitrag",
+    "new": "NEU",
+    "showing": "Anzeige",
+    "of": "von",
+    "posts": "Beiträge"
+  },
+  "common": {
+    "clear": "Löschen",
+    "chooseLanguage": "Wählen Sie Ihre Sprache",
+    "appName": "TightUser",
+    "cancel": "Abbrechen",
+    "delete": "Löschen"
+  },
+  "confirmDialog": {
+    "deletePost": "Sind Sie sicher, dass Sie diesen Beitrag löschen möchten?",
+    "deleteHeader": "Löschbestätigung"
+  },
+  "pageTitles": {
+    "Dashboard": "Dashboard",
+    "User Details": "Benutzerdetails",
+    "Page Not Found": "Seite nicht gefunden"
   }
 }

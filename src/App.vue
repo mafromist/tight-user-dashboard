@@ -8,23 +8,15 @@ import Sidebar from '@/components/layout/SidebarLayout.vue'
 const route = useRoute()
 const localeStore = useLocaleStore()
 
-const localeMap = {
-  en: 'en-US',
-  tr: 'tr-TR',
-  de: 'de-DE',
-}
-
 onMounted(() => {
   localeStore.initLocale()
 
   const paramLocale = route.params.locale
-  if (paramLocale && localeMap[paramLocale]) {
-    const fullLocale = localeMap[paramLocale]
-    localeStore.setLocale(fullLocale)
-    i18n.global.locale.value = fullLocale
+  if (paramLocale && ['en', 'tr', 'de'].includes(paramLocale)) {
+    localeStore.setLocale(paramLocale)
+    i18n.global.locale.value = paramLocale
   } else {
-    // Default to Turkish
-    i18n.global.locale.value = localeStore.currentLocale
+    i18n.global.locale.value = 'tr'
   }
 })
 </script>
@@ -38,4 +30,5 @@ onMounted(() => {
       <router-view />
     </main>
   </div>
+  <ConfirmDialog />
 </template>

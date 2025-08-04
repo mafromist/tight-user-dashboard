@@ -1,5 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
+import { useConfirm } from 'primevue/useconfirm'
+import { useI18n } from 'vue-i18n'
 import { truncateText } from '@/utils/formatters'
 
 const props = defineProps({
@@ -13,6 +15,8 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['delete-post'])
+const confirm = useConfirm()
+const { t } = useI18n()
 
 const page = ref(0)
 const perPage = 3
@@ -34,6 +38,26 @@ const prev = () => {
 }
 const expand = (post) => {
   expandedPost.value = post
+}
+
+const confirmDelete = (postId) => {
+  confirm.require({
+    message: t('confirmDialog.deletePost'),
+    header: t('confirmDialog.deleteHeader'),
+    icon: 'pi pi-exclamation-triangle',
+    rejectProps: {
+      label: t('common.cancel'),
+      severity: 'secondary',
+      outlined: true
+    },
+    acceptProps: {
+      label: t('common.delete'),
+      severity: 'danger'
+    },
+    accept: () => {
+      emit('delete-post', postId)
+    }
+  })
 }
 </script>
 
@@ -66,7 +90,7 @@ const expand = (post) => {
               v-if="post.createdAt"
               class="tw-absolute tw-top-2 tw-right-2 tw-bg-green-100 tw-text-green-800 tw-text-xs tw-font-bold tw-px-2 tw-py-1 tw-rounded"
             >
-              NEW
+{{ $t('posts.new') }}
             </span>
           </template>
           <template #title>
@@ -80,14 +104,14 @@ const expand = (post) => {
           <template #footer>
             <div class="tw-flex tw-justify-between tw-items-center">
               <Button
-                @click="emit('delete-post', post.id)"
+                @click="confirmDelete(post.id)"
                 icon="pi pi-trash"
                 severity="danger"
                 outlined
                 size="small"
                 class="tw-mr-2"
               />
-              <Button label="Read More" size="small" text @click="expand(post)" />
+              <Button :label="$t('posts.readMore')" size="small" text @click="expand(post)" />
             </div>
           </template>
         </Card>
@@ -104,13 +128,13 @@ const expand = (post) => {
         <template #title>
           {{ expandedPost.title }}
         </template>
-        <template #subtitle> Full Post </template>
+        <template #subtitle> {{ $t('posts.fullPost') }} </template>
         <template #content>
           <p>{{ expandedPost.body }}</p>
         </template>
         <template #footer>
           <div class="tw-flex tw-justify-end">
-            <Button label="Back to Posts" size="small" @click="expandedPost = null" />
+            <Button :label="$t('posts.backToPosts')" size="small" @click="expandedPost = null" />
           </div>
         </template>
       </Card>
@@ -122,7 +146,7 @@ const expand = (post) => {
     >
       <div v-if="!showAll" class="tw-flex tw-justify-between tw-w-full">
         <div class="tw-text-xs tw-text-surface-500">
-          Showing {{ startIndex + 1 }}–{{ endIndex }} of {{ postsProp.length }} posts
+{{ $t('posts.showing') }} {{ startIndex + 1 }}–{{ endIndex }} {{ $t('posts.of') }} {{ postsProp.length }} {{ $t('posts.posts') }}
         </div>
         <div class="tw-flex tw-gap-2">
           <Button
@@ -142,8 +166,8 @@ const expand = (post) => {
         </div>
       </div>
       <div class="tw-flex tw-whitespace-nowrap">
-        <Button label="Show All" @click="showAll = true" size="small" v-if="!showAll" />
-        <Button label="Show Last 3 Posts" @click="showAll = false" size="small" v-else />
+        <Button :label="$t('posts.showAll')" @click="showAll = true" size="small" v-if="!showAll" />
+        <Button :label="$t('posts.showLast3')" @click="showAll = false" size="small" v-else />
       </div>
     </div>
   </div>

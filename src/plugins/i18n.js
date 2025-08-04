@@ -1,11 +1,16 @@
 import { createI18n } from 'vue-i18n'
 
-const messages = Object.fromEntries(
-  Object.entries(import.meta.glob('./locales/*.json', { eager: true })).map(([key, value]) => [
-    key.slice(11, -5),
-    value.default,
-  ]),
-)
+import en from './i18n/locales/en.json'
+import tr from './i18n/locales/tr.json'
+import de from './i18n/locales/de.json'
+
+const messages = {
+  en,
+  tr,
+  de,
+}
+
+console.log('Loaded messages:', messages)
 
 export default createI18n({
   legacy: false,

@@ -12,7 +12,7 @@ export const useLocaleStore = defineStore('locale', () => {
 
   const initLocale = () => {
     const saved = localStorage.getItem('app-locale')
-    currentLocale.value = saved || 'tr-TR' // ✅ Turkish as default
+    currentLocale.value = saved || 'tr'
   }
 
   return {

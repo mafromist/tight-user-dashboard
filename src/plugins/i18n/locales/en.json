@@ -7,7 +7,48 @@
     "details": "User Details",
     "name": "Name",
     "email": "Email",
-    "phone": "Phone"
+    "phone": "Phone",
+    "list": "User List",
+    "totalUsers": "Total Users",
+    "loadingUsers": "Loading users...",
+    "notFound": "User not found.",
+    "backToTable": "Back to User Table",
+    "goToDetails": "Go to User Details",
+    "searchByName": "Search by name",
+    "noUsersFound": "No users found.",
+    "loadingData": "Loading users data. Please wait."
+  },
+  "posts": {
+    "createNew": "Create a New Post",
+    "shareThoughts": "Got something to share? Fill out the form below to publish your thoughts.",
+    "whatsOnMind": "What's on your mind today?",
+    "startWriting": "Start by entering a catchy title and a meaningful message.",
+    "postTitle": "Post Title",
+    "postContent": "Post Content",
+    "titlePlaceholder": "e.g. Travel Notes from Thailand",
+    "contentPlaceholder": "Share your experience, thoughts, or questions...",
+    "publish": "Publish",
+    "yourPosts": "Your Posts",
+    "readMore": "Read More",
+    "backToPosts": "Back to Posts",
+    "showAll": "Show All",
+    "showLast3": "Show Last 3 Posts",
+    "fullPost": "Full Post",
+    "new": "NEW",
+    "showing": "Showing",
+    "of": "of",
+    "posts": "posts"
+  },
+  "common": {
+    "clear": "Clear",
+    "chooseLanguage": "Choose Your Language",
+    "appName": "TightUser",
+    "cancel": "Cancel",
+    "delete": "Delete"
+  },
+  "confirmDialog": {
+    "deletePost": "Are you sure you want to delete this post?",
+    "deleteHeader": "Delete Confirmation"
   },
   "pageTitles": {
     "Dashboard": "Dashboard",
