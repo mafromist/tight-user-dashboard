@@ -58,17 +58,28 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <aside
-    class="tw-bg-purple-100 tw-border-r tw-p-4 tw-shadow-md tw-h-full tw-flex tw-flex-col tw-justify-around tw-items-center"
-  >
+  <aside class="tw-bg-purple-100 tw-border-r tw-p-4 tw-shadow-md tw-h-full tw-flex tw-flex-col">
+    <!-- 🔷 Brand / Logo -->
+    <div class="tw-text-2xl tw-font-bold tw-text-purple-800 tw-mb-6 text-center">TightUser</div>
+
+    <!-- 📋 Conditional Menu Item -->
+    <div
+      v-if="route.name === 'UserDetails'"
+      class="tw-text-purple-700 tw-font-medium tw-text-center tw-mb-6"
+    >
+      {{ t('dashboard.userTable') }}
+    </div>
+
+    <!-- 👤 User Details or Dashboard Link -->
     <template v-if="route.path.includes('user') && currentUser">
-      <Card role="user-details" class="tw-flex tw-items-center tw-mt-20 tw-pt-12">
+      <Card role="user-details" class="tw-flex tw-items-center tw-mt-4 tw-pt-4 tw-shadow-none">
         <template #header>
           <img
             :src="`https://i.pravatar.cc/150?u=${currentUser.id}`"
             class="tw-rounded-full tw-w-24 tw-h-24 tw-mx-auto tw-mb-4"
             alt="User avatar"
-        /></template>
+          />
+        </template>
         <template #title>{{ currentUser.name }}</template>
         <template #subtitle>{{ currentUser.email }}</template>
         <template #content>
@@ -79,27 +90,28 @@ const { t } = useI18n()
     </template>
 
     <template v-else>
-      <h2 class="text-xl font-bold mb-4">{{ t('dashboard.title') }}</h2>
-      <RouterLink to="/dashboard" class="text-blue-600 hover:underline">{{
-        t('dashboard.userTable')
-      }}</RouterLink>
+      <h2 class="tw-text-xl tw-font-bold tw-mb-4">{{ t('dashboard.title') }}</h2>
+      <RouterLink to="/dashboard" class="tw-text-blue-600 hover:underline">
+        {{ t('dashboard.userTable') }}
+      </RouterLink>
     </template>
 
     <!-- 🌍 Language switcher at bottom -->
-    <div class="tw-mt-auto tw-mb-20 tw-border-t tw-border-gray-200">
-      <p class="tw-text-purple-600 tw-font-bold">Choose Your Language</p>
-      <div class="tw-space-y">
+    <div class="tw-mt-auto tw-mb-10 tw-border-t tw-pt-4 tw-border-gray-300">
+      <p class="tw-text-purple-600 tw-font-bold tw-mb-2">Choose Your Language</p>
+      <div class="tw-flex">
         <Button
           v-for="lang in languages"
           :key="lang.code"
           :label="lang.label"
-          class="tw-text-left !tw-bg-transparent !tw-border-none tw-mr-2"
+          class="!tw-bg-transparent !tw-border-none tw-text-lg"
           @click="changeLanguage(lang.code)"
         />
       </div>
     </div>
-    <!-- 🌍 Language switcher at bottom -->
-    <div class="tw-mt-10">
+
+    <!-- 🌓 Dark mode toggle -->
+    <div class="tw-mb-4 text-center">
       <Button
         type="button"
         @click="toggleDarkMode"

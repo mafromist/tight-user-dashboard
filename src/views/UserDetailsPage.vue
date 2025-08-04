@@ -9,7 +9,7 @@ const route = useRoute()
 const userStore = useUserStore()
 const postsStore = usePostsStore()
 const user = computed(() => userStore.currentUser)
-const userPosts = ref([])
+const userPosts = computed(() => postsStore.posts)
 
 const newPost = reactive({
   title: '',
@@ -48,7 +48,6 @@ const deletePost = async (postId) => {
 onMounted(async () => {
   await userStore.getUser(Number(route.params.id))
   await postsStore.fetchPostsByUser(Number(route.params.id))
-  userPosts.value = [...postsStore.posts]
 })
 </script>
 

@@ -78,7 +78,15 @@ const goToUserDetail = (id) => {
         <template #body="{ data }">
           <div class="tw-flex tw-items-center tw-justify-between">
             <div class="tw-flex tw-items-center">
-              <OverlayBadge :value="data.postCount" severity="danger" class="tw-inline-flex">
+              <OverlayBadge
+                :value="data.postCount"
+                severity="danger"
+                class="tw-inline-flex"
+                v-tooltip.bottom="{
+                  value: `${data.name} has ${data.postCount} post${data.postCount > 1 ? 's' : ''}`,
+                  autoHide: false,
+                }"
+              >
                 <Avatar :label="data.name.charAt(0)" size="small" />
               </OverlayBadge>
               <h3 class="tw-m-6">{{ data.name }}</h3>

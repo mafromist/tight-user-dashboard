@@ -34,7 +34,7 @@ onMounted(() => {
     <div class="tw-w-full tw-h-auto lg:tw-h-full lg:tw-w-[20%]">
       <Sidebar />
     </div>
-    <main class="tw-w-full tw-h-full lg:tw-overflow-y-hidden lg:tw-w-[80%] lg:tw-h-auto tw-p-6">
+    <main class="tw-w-full tw-h-full tw-overflow-auto lg:tw-w-[80%] tw-p-6">
       <router-view />
     </main>
   </div>

@@ -19,6 +19,7 @@ export const useUserStore = defineStore('users', () => {
       const usersWithPostCounts = await Promise.all(
         rawUsers.map(async (user) => {
           const postCount = await postsStore.getUserPostCount(user.id)
+
           return { ...user, postCount }
         }),
       )
@@ -39,9 +40,6 @@ export const useUserStore = defineStore('users', () => {
         fetchUserById(userId),
         postsStore.getUserPostCount(userId),
       ])
-
-      console.log('data', data)
-      console.log('postCount', postCount)
 
       const merged = {
         ...data,
