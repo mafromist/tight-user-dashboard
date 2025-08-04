@@ -48,8 +48,6 @@ const changeLanguage = (code) => {
   const path = route.fullPath.replace(/^\/[a-z]{2}/, `/${code}`)
   router.push(path)
 }
-
-const { t } = useI18n()
 </script>
 
 <template>
@@ -77,10 +75,10 @@ const { t } = useI18n()
     </template>
 
     <div
-      class="tw-flex tw-justify-center tw-items-center tw-mb-10 tw-border-t tw-pt-4 tw-border-gray-300"
+      class="tw-hidden lg:tw-flex tw-justify-center tw-items-center tw-border-t tw-pt-4 tw-border-gray-300"
     >
-      <p class="tw-text-purple-600 tw-font-bold tw-mb-2">{{ $t('common.chooseLanguage') }}</p>
-      <div class="">
+      <div class="tw-text-center">
+        <p class="tw-text-purple-600 tw-font-bold tw-mb-2">{{ $t('common.chooseLanguage') }}</p>
         <Button
           v-for="lang in languages"
           :key="lang.code"

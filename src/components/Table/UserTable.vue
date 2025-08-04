@@ -62,12 +62,28 @@ const goToUserDetail = (id) => {
       :filters="filters"
     >
       <template #header>
-        <div class="flex justify-end gap-2">
+        <div class="tw-flex tw-justify-between tw-items-center tw-gap-2">
+          <div class="tw-flex tw-gap-2">
+            <div
+              v-if="filters?.global?.value"
+              class="tw-inline-flex tw-items-center tw-bg-blue-100 tw-text-blue-800 tw-px-2 tw-py-1 tw-rounded tw-text-sm"
+            >
+              Search: {{ filters.global.value }}
+              <i class="pi pi-times tw-ml-2 tw-cursor-pointer" @click="filters.global.value = null"></i>
+            </div>
+            <div
+              v-if="filters?.name?.constraints?.[0]?.value"
+              class="tw-inline-flex tw-items-center tw-bg-blue-100 tw-text-blue-800 tw-px-2 tw-py-1 tw-rounded tw-text-sm"
+            >
+              Name: {{ filters.name.constraints[0].value }}
+              <i class="pi pi-times tw-ml-2 tw-cursor-pointer" @click="filters.name.constraints[0].value = null"></i>
+            </div>
+          </div>
           <Button
-            v-if="filters"
+            v-if="filters?.global?.value || filters?.name?.constraints?.[0]?.value"
             type="button"
             icon="pi pi-filter-slash"
-:label="$t('common.clear')"
+            :label="$t('common.clear')"
             outlined
             @click="clearFilter()"
           />
@@ -93,7 +109,7 @@ const goToUserDetail = (id) => {
               <h3 class="tw-m-6">{{ data.name }}</h3>
             </div>
             <Button
-:label="$t('user.goToDetails')"
+              :label="$t('user.goToDetails')"
               class="p-button-text tw-bold"
               icon="pi pi-user"
               @click="goToUserDetail(data.id)"
@@ -101,7 +117,11 @@ const goToUserDetail = (id) => {
           </div>
         </template>
         <template #filter="{ filterModel }">
-          <InputText v-model="filterModel.value" type="text" :placeholder="$t('user.searchByName')" />
+          <InputText
+            v-model="filterModel.value"
+            type="text"
+            :placeholder="$t('user.searchByName')"
+          />
         </template>
       </Column>
     </DataTable>
