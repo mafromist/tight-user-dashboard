@@ -16,10 +16,6 @@ export const sendPost = async (postData) => {
   return baseRequest(() => api.post('/posts', postData))
 }
 
-export const editPost = async (postId, postData) => {
-  return baseRequest(() => api.put(`/posts/${postId}`, postData))
-}
-
 export const deletePost = async (postId) => {
   return baseRequest(() => api.delete(`/posts/${postId}`))
 }

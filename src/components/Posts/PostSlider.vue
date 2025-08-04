@@ -62,6 +62,12 @@ const expand = (post) => {
               :src="`https://i.pravatar.cc/150?u=${userId}`"
               class="tw-object-cover tw-h-50 tw-w-[135px] tw-my-4 tw-mx-auto tw-rounded-full"
             />
+            <span
+              v-if="post.createdAt"
+              class="tw-absolute tw-top-2 tw-right-2 tw-bg-green-100 tw-text-green-800 tw-text-xs tw-font-bold tw-px-2 tw-py-1 tw-rounded"
+            >
+              NEW
+            </span>
           </template>
           <template #title>
             {{ truncateText(post.title, 40) }}

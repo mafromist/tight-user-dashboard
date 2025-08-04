@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import { getUserPosts, sendPost, editPost, deletePost } from '@/services/postServices.js'
+import { getUserPosts, sendPost, deletePost } from '@/services/postServices.js'
 
 export const usePostsStore = defineStore('posts', () => {
   const posts = ref([])
@@ -65,31 +65,18 @@ export const usePostsStore = defineStore('posts', () => {
   const createPost = async (postData) => {
     try {
       const newPost = await sendPost(postData)
-      posts.value.unshift({
+
+      const newAddedPost = {
         ...newPost,
-        createdAt: newPost.createdAt || new Date().toISOString(),
-      })
+        id: posts.value.length + 1,
+        userId: postData.userId,
+        createdAt: new Date().toISOString(),
+      }
+
+      posts.value.unshift(newAddedPost)
       syncPostsToStorage()
     } catch (err) {
       console.error('Error creating post:', err)
-      error.value = err
-    }
-  }
-
-  const updatePost = async (postId, updatedData) => {
-    try {
-      const updated = await editPost(postId, updatedData)
-      const updatedAt = new Date().toISOString()
-      const index = posts.value.findIndex((p) => p.id === postId)
-      if (index !== -1) {
-        posts.value[index] = {
-          ...updated,
-          updatedAt,
-          createdAt: posts.value[index].createdAt || null,
-        }
-        posts.value = [...posts.value] // Trigger reactivity
-      }
-    } catch (err) {
       error.value = err
     }
   }
@@ -110,7 +97,6 @@ export const usePostsStore = defineStore('posts', () => {
     error,
     fetchPostsByUser,
     createPost,
-    updatePost,
     removePost,
     getUserPostCount,
     loadPostsFromStorage,
