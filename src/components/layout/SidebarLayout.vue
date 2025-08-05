@@ -53,7 +53,6 @@ const changeLanguage = (code) => {
     class="tw-bg-purple-100 tw-border-r tw-p-4 tw-shadow-md tw-h-full tw-flex tw-flex-col tw-justify-between"
   >
     <SidebarHeader :isDarkTheme="isDarkTheme" :toggleDarkMode="toggleDarkMode" />
-    <!-- 👤 User Details or Dashboard Link -->
     <template v-if="route.path.includes('user') && currentUser">
       <Card role="user-details" class="tw-flex tw-items-center tw-mt-4 tw-pt-4 tw-shadow-none">
         <template #header>
@@ -67,7 +66,7 @@ const changeLanguage = (code) => {
         <template #subtitle>{{ currentUser.email }}</template>
         <template #content>
           <p>📞 {{ currentUser.phone }}</p>
-          <p>🏠 {{ currentUser.address.street }}, {{ currentUser.address.city }}</p>
+          <p>🏠<i icon="p"></i> {{ currentUser.address.street }}, {{ currentUser.address.city }}</p>
         </template>
       </Card>
     </template>

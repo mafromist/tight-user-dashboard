@@ -50,8 +50,6 @@ export const usePostsStore = defineStore('posts', () => {
     if (Array.isArray(cached)) {
       return cached.length
     }
-
-    // 🔁 Fallback to API if no sessionStorage cache
     try {
       const data = await getUserPosts(userId)
       sessionStorage.setItem(`user-posts-${userId}`, JSON.stringify(data))

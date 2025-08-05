@@ -66,17 +66,23 @@ const goToUserDetail = (id) => {
           <div class="tw-flex tw-gap-2">
             <div
               v-if="filters?.global?.value"
-              class="tw-inline-flex tw-items-center tw-bg-blue-100 tw-text-blue-800 tw-px-2 tw-py-1 tw-rounded tw-text-sm"
+              class="tw-inline-flex tw-items-center tw-px-2 tw-py-1 tw-rounded tw-text-sm"
             >
               Search: {{ filters.global.value }}
-              <i class="pi pi-times tw-ml-2 tw-cursor-pointer" @click="filters.global.value = null"></i>
+              <i
+                class="pi pi-times tw-ml-2 tw-cursor-pointer"
+                @click="filters.global.value = null"
+              ></i>
             </div>
             <div
               v-if="filters?.name?.constraints?.[0]?.value"
-              class="tw-inline-flex tw-items-center tw-bg-blue-100 tw-text-blue-800 tw-px-2 tw-py-1 tw-rounded tw-text-sm"
+              class="tw-inline-flex tw-items-center tw-px-2 tw-py-1 tw-rounded tw-text-sm"
             >
               Name: {{ filters.name.constraints[0].value }}
-              <i class="pi pi-times tw-ml-2 tw-cursor-pointer" @click="filters.name.constraints[0].value = null"></i>
+              <i
+                class="pi pi-times tw-ml-2 tw-cursor-pointer"
+                @click="filters.name.constraints[0].value = null"
+              ></i>
             </div>
           </div>
           <Button

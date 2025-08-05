@@ -8,7 +8,6 @@ export const api = axios.create({
   },
 })
 
-// Centralized wrapper for consistent error/data handling
 export const baseRequest = async (requestFn) => {
   try {
     const response = await requestFn()

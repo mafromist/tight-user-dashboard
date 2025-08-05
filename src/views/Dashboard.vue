@@ -2,7 +2,7 @@
 import { onMounted, computed } from 'vue'
 
 import { useUserStore } from '@/stores/user'
-import UserTable from '@/components/Table/UserTable.vue'
+import UserTable from '@/components/table/UserTable.vue'
 
 const userStore = useUserStore()
 const users = computed(() => userStore.users)

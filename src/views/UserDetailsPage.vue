@@ -1,20 +1,23 @@
 <script setup>
-import { computed, onMounted, reactive } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useUserStore } from '@/stores/user'
 import { usePostsStore } from '@/stores/posts'
 import { useToast } from 'primevue/usetoast'
-import PostSlider from '@/components/Posts/PostSlider.vue'
-import AddPost from '@/components/Posts/AddPost.vue'
+import PostSlider from '@/components/posts/PostSlider.vue'
+import AddPost from '@/components/posts/AddPost.vue'
 
 const route = useRoute()
 const userStore = useUserStore()
 const postsStore = usePostsStore()
 const toast = useToast()
+const timeCountForToast = 3000
 const user = computed(() => userStore.currentUser)
 const userPosts = computed(() => postsStore.posts)
 
-const handlePostAdded = async (params) => {
+// Add Post Function for AddPost Component
+
+const addPost = async (params) => {
   try {
     await postsStore.createPost(params)
   } catch (error) {
@@ -22,12 +25,12 @@ const handlePostAdded = async (params) => {
       severity: 'error',
       summary: 'Error',
       detail: 'Failed to create post',
-      life: 3000
+      life: timeCountForToast,
     })
   }
 }
 
-// delete post method
+// Delete Post Function on User Details Page
 
 const deletePost = async (postId) => {
   try {
@@ -36,14 +39,14 @@ const deletePost = async (postId) => {
       severity: 'success',
       summary: 'Success',
       detail: 'Post deleted successfully',
-      life: 3000
+      life: timeCountForToast,
     })
   } catch (error) {
     toast.add({
       severity: 'error',
       summary: 'Error',
       detail: 'Failed to delete post',
-      life: 3000
+      life: timeCountForToast,
     })
   }
 }
@@ -57,7 +60,7 @@ onMounted(async () => {
       severity: 'error',
       summary: 'Error',
       detail: 'Failed to load user data',
-      life: 3000
+      life: timeCountForToast,
     })
   }
 })
@@ -65,7 +68,7 @@ onMounted(async () => {
 
 <template>
   <div v-if="user">
-    <AddPost :userId="user.id" @post-added="handlePostAdded" />
+    <AddPost :userId="user.id" @post-added="addPost" />
 
     <!-- User's Posts Table -->
     <section class="user-posts">

@@ -13,6 +13,7 @@
   --p-electric-violet-950: #380764;
 
   /* If you need more like this */
+  --p-primary-50: var(--p-electric-violet-50);
   --p-primary-100: var(--p-electric-violet-100);
   --p-primary-200: var(--p-electric-violet-200);
   --p-primary-300: var(--p-electric-violet-300);
@@ -37,6 +38,7 @@
   --p-button-bg: var(--p-primary-color);
   --p-button-text: var(--p-primary-color-text);
   --p-button-border: var(--p-primary-color);
+  --p-button-text-info-color: var(--p-primary-color);
 
   /* 🧾 Inputs */
   --p-input-border-color: var(--p-electric-violet-500);

@@ -30,6 +30,9 @@ const postsToRender = computed(() => {
   return showAll.value ? props.postsProp : props.postsProp.slice(startIndex.value, endIndex.value)
 })
 
+const titleTruncate = (postTitle) => truncateText(postTitle, 40)
+const textTruncate = (postTitle) => truncateText(postTitle, 100)
+
 const next = () => {
   if (endIndex.value < props.postsProp.length) page.value++
 }
@@ -81,24 +84,26 @@ const confirmDelete = (postId) => {
           role="user-post"
         >
           <template #header>
-            <img
-              alt="user-profile-picture"
-              :src="`https://i.pravatar.cc/150?u=${userId}`"
-              class="tw-object-cover tw-h-50 tw-w-[135px] tw-my-4 tw-mx-auto tw-rounded-full"
-            />
-            <span
-              v-if="post.createdAt"
-              class="tw-absolute tw-top-2 tw-right-2 tw-bg-green-100 tw-text-green-800 tw-text-xs tw-font-bold tw-px-2 tw-py-1 tw-rounded"
-            >
-              {{ $t('posts.new') }}
-            </span>
+            <div class="tw-h-[200px]">
+              <img
+                alt="user-profile-picture"
+                :src="`https://i.pravatar.cc/150?u=${userId}`"
+                class="tw-object-cover tw-h-50 tw-w-[135px] tw-my-4 tw-mx-auto tw-rounded-full"
+              />
+              <span
+                v-if="post.createdAt"
+                class="tw-absolute tw-top-2 tw-right-2 tw-bg-green-100 tw-text-green-800 tw-text-xs tw-font-bold tw-px-2 tw-py-1 tw-rounded"
+              >
+                {{ $t('posts.new') }}
+              </span>
+            </div>
           </template>
           <template #title>
-            {{ truncateText(post.title, 40) }}
+            {{ titleTruncate(post.title) }}
           </template>
           <template #content>
             <p class="tw-text-sm tw-text-surface-500">
-              {{ truncateText(post.body, 100) }}
+              {{ textTruncate(post.body) }}
             </p>
           </template>
           <template #footer>

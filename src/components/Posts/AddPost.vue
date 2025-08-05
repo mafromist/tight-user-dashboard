@@ -1,3 +1,53 @@
+<script setup>
+import { reactive } from 'vue'
+import { useToast } from 'primevue/usetoast'
+
+const props = defineProps({
+  userId: {
+    type: Number,
+    required: true,
+  },
+})
+
+const emit = defineEmits(['post-added'])
+const toast = useToast()
+const timeCountForToast = 3000
+
+const newPost = reactive({
+  title: '',
+  body: '',
+})
+
+const addPost = async () => {
+  try {
+    const params = {
+      userId: props.userId,
+      title: newPost.title,
+      body: newPost.body,
+    }
+
+    emit('post-added', params)
+
+    toast.add({
+      severity: 'success',
+      summary: 'Success',
+      detail: 'Post published successfully!',
+      life: timeCountForToast,
+    })
+
+    newPost.title = ''
+    newPost.body = ''
+  } catch (error) {
+    toast.add({
+      severity: 'error',
+      summary: 'Error',
+      detail: 'Failed to publish post',
+      life: timeCountForToast,
+    })
+  }
+}
+</script>
+
 <template>
   <section class="add-post">
     <form @submit.prevent="addPost">
@@ -37,7 +87,7 @@
                   required
                 />
               </SplitterPanel>
-              <SplitterPanel :size="60" class="tw-p-4">
+              <SplitterPanel :size="58" class="tw-p-4">
                 <label class="tw-block tw-font-medium tw-mb-2 tw-mr-8" for="postContent">{{
                   $t('posts.postContent')
                 }}</label>
@@ -52,13 +102,13 @@
                   required
                 />
               </SplitterPanel>
-              <SplitterPanel :size="10" class="tw-flex tw-mt-2 tw-justify-end">
+              <SplitterPanel :size="12" class="tw-flex tw-mt-2 tw-justify-end">
                 <Button
                   type="submit"
                   :label="$t('posts.publish')"
                   icon="pi pi-send"
                   severity="primary"
-                  class="tw-p-4"
+                  class="tw-p-4 tw-max-h-[50px] tw-min-h-[40px]"
                 />
               </SplitterPanel>
             </Splitter>
@@ -68,52 +118,3 @@
     </form>
   </section>
 </template>
-
-<script setup>
-import { reactive } from 'vue'
-import { useToast } from 'primevue/usetoast'
-
-const props = defineProps({
-  userId: {
-    type: Number,
-    required: true,
-  },
-})
-
-const emit = defineEmits(['post-added'])
-const toast = useToast()
-
-const newPost = reactive({
-  title: '',
-  body: '',
-})
-
-const addPost = async () => {
-  try {
-    const params = {
-      userId: props.userId,
-      title: newPost.title,
-      body: newPost.body,
-    }
-
-    emit('post-added', params)
-
-    toast.add({
-      severity: 'success',
-      summary: 'Success',
-      detail: 'Post published successfully!',
-      life: 3000,
-    })
-
-    newPost.title = ''
-    newPost.body = ''
-  } catch (error) {
-    toast.add({
-      severity: 'error',
-      summary: 'Error',
-      detail: 'Failed to publish post',
-      life: 3000,
-    })
-  }
-}
-</script>

@@ -40,7 +40,7 @@ const router = createRouter({
 })
 
 router.afterEach((to) => {
-  const title = to.meta?.title || 'My App'
+  const title = to.meta?.title ? `TightUser - ${to.meta?.title}` : 'My App'
   if (typeof document !== 'undefined') {
     document.title = title
   }
