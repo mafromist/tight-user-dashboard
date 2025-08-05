@@ -1,8 +1,8 @@
 @use 'primeicons/primeicons.css';
-@use 'global.scss';
-@use 'colors.scss';
+@use './styles/global.scss';
+@use './styles/colors.scss';
 
-@use 'components/postSlider.scss';
+@use './styles/components/postSlider.scss';
 
 @tailwind base;
 @tailwind components;
