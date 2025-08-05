@@ -99,7 +99,9 @@ const confirmDelete = (postId) => {
             </div>
           </template>
           <template #title>
-            {{ titleTruncate(post.title) }}
+            <div class="tw-text-primary">
+              {{ titleTruncate(post.title) }}
+            </div>
           </template>
           <template #content>
             <p class="tw-text-sm tw-text-surface-500">

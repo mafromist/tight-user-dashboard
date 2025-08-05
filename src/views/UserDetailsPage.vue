@@ -72,7 +72,7 @@ onMounted(async () => {
 
     <!-- User's Posts Table -->
     <section class="user-posts">
-      <h2>{{ $t('posts.yourPosts') }}</h2>
+      <h2 class="tw-text-primary">{{ $t('posts.yourPosts') }}</h2>
       <Divider />
       <PostSlider :postsProp="userPosts" :userId="user.id" @delete-post="deletePost" />
     </section>

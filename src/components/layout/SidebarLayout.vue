@@ -50,7 +50,7 @@ const changeLanguage = (code) => {
 
 <template>
   <aside
-    class="tw-bg-purple-100 tw-border-r tw-p-4 tw-shadow-md tw-h-full tw-flex tw-flex-col tw-justify-between"
+    class="tw-bg-purple-300 tw-border-r tw-text-center tw-p-4 tw-shadow-md tw-h-full tw-flex tw-flex-col tw-justify-between"
   >
     <SidebarHeader :isDarkTheme="isDarkTheme" :toggleDarkMode="toggleDarkMode" />
     <template v-if="route.path.includes('user') && currentUser">
@@ -63,10 +63,39 @@ const changeLanguage = (code) => {
           />
         </template>
         <template #title>{{ currentUser.name }}</template>
-        <template #subtitle>{{ currentUser.email }}</template>
+        <template #subtitle>
+          <Button
+            as="a"
+            :label="currentUser.email"
+            icon="pi pi-envelope"
+            :href="`mailto:${currentUser.email}`"
+            target="_blank"
+            rel="noopener"
+            severity="secondary"
+            variant="text"
+            rounded
+            aria-label="User's Email Address"
+            class="tw-no-underline"
+          />
+        </template>
         <template #content>
-          <p>📞 {{ currentUser.phone }}</p>
-          <p>🏠<i icon="p"></i> {{ currentUser.address.street }}, {{ currentUser.address.city }}</p>
+          <Button
+            as="a"
+            :label="currentUser.phone"
+            icon="pi pi-phone"
+            :href="`tel:${currentUser.phone}`"
+            target="_blank"
+            rel="noopener"
+            severity="secondary"
+            variant="text"
+            rounded
+            aria-label="User's Phone Number"
+            class="tw-no-underline"
+          />
+          <p>
+            <i class="pi pi-home"></i>
+            {{ currentUser.address.street }}, {{ currentUser.address.city }}
+          </p>
         </template>
       </Card>
     </template>
@@ -80,7 +109,12 @@ const changeLanguage = (code) => {
           v-for="lang in languages"
           :key="lang.code"
           :label="lang.label"
-          class="tw-bg-transparent tw-border-none tw-text-lg"
+          :class="[
+            'tw-border-none tw-text-lg',
+            route.params.locale === lang.code
+              ? 'tw-bg-purple-200 tw-rounded-full'
+              : 'tw-bg-transparent',
+          ]"
           @click="changeLanguage(lang.code)"
         />
       </div>
