@@ -9,7 +9,6 @@ const users = computed(() => userStore.users)
 
 onMounted(async () => {
   await userStore.getUsers()
-  console.log('users', users.value)
 })
 </script>
 

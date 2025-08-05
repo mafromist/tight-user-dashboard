@@ -16,7 +16,7 @@ onMounted(() => {
     localeStore.setLocale(paramLocale)
     i18n.global.locale.value = paramLocale
   } else {
-    i18n.global.locale.value = 'tr'
+    i18n.global.locale.value = 'en'
   }
 })
 </script>
@@ -31,4 +31,5 @@ onMounted(() => {
     </main>
   </div>
   <ConfirmDialog />
+  <Toast />
 </template>

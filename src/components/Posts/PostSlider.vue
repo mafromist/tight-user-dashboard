@@ -48,15 +48,15 @@ const confirmDelete = (postId) => {
     rejectProps: {
       label: t('common.cancel'),
       severity: 'secondary',
-      outlined: true
+      outlined: true,
     },
     acceptProps: {
       label: t('common.delete'),
-      severity: 'danger'
+      severity: 'danger',
     },
     accept: () => {
       emit('delete-post', postId)
-    }
+    },
   })
 }
 </script>
@@ -90,7 +90,7 @@ const confirmDelete = (postId) => {
               v-if="post.createdAt"
               class="tw-absolute tw-top-2 tw-right-2 tw-bg-green-100 tw-text-green-800 tw-text-xs tw-font-bold tw-px-2 tw-py-1 tw-rounded"
             >
-{{ $t('posts.new') }}
+              {{ $t('posts.new') }}
             </span>
           </template>
           <template #title>
@@ -146,7 +146,8 @@ const confirmDelete = (postId) => {
     >
       <div v-if="!showAll" class="tw-flex tw-justify-between tw-w-full">
         <div class="tw-text-xs tw-text-surface-500">
-{{ $t('posts.showing') }} {{ startIndex + 1 }}–{{ endIndex }} {{ $t('posts.of') }} {{ postsProp.length }} {{ $t('posts.posts') }}
+          {{ $t('posts.showing') }} {{ startIndex + 1 }}–{{ endIndex }} {{ $t('posts.of') }}
+          {{ postsProp.length }} {{ $t('posts.posts') }}
         </div>
         <div class="tw-flex tw-gap-2">
           <Button

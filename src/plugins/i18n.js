@@ -10,8 +10,6 @@ const messages = {
   de,
 }
 
-console.log('Loaded messages:', messages)
-
 export default createI18n({
   legacy: false,
   globalInjection: true,

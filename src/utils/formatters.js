@@ -25,7 +25,6 @@ export const formatDate = (isoString) => {
   })
 }
 
-// 🕐 Sadece tarih (gg.aa.yyyy)
 export const formatShortDate = (isoString) => {
   if (!isoString) return '-'
 

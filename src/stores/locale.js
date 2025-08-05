@@ -12,7 +12,7 @@ export const useLocaleStore = defineStore('locale', () => {
 
   const initLocale = () => {
     const saved = localStorage.getItem('app-locale')
-    currentLocale.value = saved || 'tr'
+    currentLocale.value = saved || 'en'
   }
 
   return {

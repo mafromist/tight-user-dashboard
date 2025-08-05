@@ -490,14 +490,7 @@
   </main>
 </template>
 
-<script setup>
-// No JS needed unless you want to track route or language
-</script>
-
 <style scoped>
-/* @import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans&display=swap'); */
-
-/* Tailwind does not animate SVG transforms by default, so we use manual keyframes */
 #g6219 {
   transform-origin: 85px 4px;
   animation: wiggle-rotate 12s 0.5s infinite ease-out;

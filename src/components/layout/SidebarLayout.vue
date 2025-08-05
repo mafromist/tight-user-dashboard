@@ -3,7 +3,6 @@ import { reactive, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useLocaleStore } from '@/stores/locale'
 import i18n from '@/plugins/i18n'
-import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useUserStore } from '@/stores/user'
 import SidebarHeader from './SidebarHeader.vue'
@@ -20,7 +19,6 @@ const appConfig = reactive({
 const toggleDarkMode = () => {
   if (!document.startViewTransition) {
     executeDarkModeToggle()
-
     return
   }
 
