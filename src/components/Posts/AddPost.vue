@@ -37,7 +37,7 @@ const addPost = async () => {
 
     newPost.title = ''
     newPost.body = ''
-  } catch (error) {
+  } catch {
     toast.add({
       severity: 'error',
       summary: 'Error',
