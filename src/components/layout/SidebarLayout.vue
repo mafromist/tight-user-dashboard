@@ -1,15 +1,13 @@
 <script setup>
 import { reactive, computed } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
-import { useLocaleStore } from '@/stores/locale'
-import i18n from '@/plugins/i18n'
+import { useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { useUserStore } from '@/stores/user'
+import { useLanguage } from '@/composables/switchLanguage'
+const { languages, changeLanguage } = useLanguage()
 import SidebarHeader from './SidebarHeader.vue'
 
-const router = useRouter()
 const route = useRoute()
-const localeStore = useLocaleStore()
 const { currentUser } = storeToRefs(useUserStore())
 
 const appConfig = reactive({
@@ -21,7 +19,6 @@ const toggleDarkMode = () => {
     executeDarkModeToggle()
     return
   }
-
   document.startViewTransition(() => executeDarkModeToggle(event))
 }
 
@@ -31,21 +28,6 @@ const executeDarkModeToggle = () => {
 }
 
 const isDarkTheme = computed(() => appConfig.darkTheme)
-
-const languages = [
-  { code: 'tr', label: '🇹🇷' },
-  { code: 'en', label: '🇬🇧' },
-  { code: 'de', label: '🇩🇪' },
-]
-
-const changeLanguage = (code) => {
-  localeStore.setLocale(code)
-  i18n.global.locale.value = code
-
-  // Replace just the locale in the current path
-  const path = route.fullPath.replace(/^\/[a-z]{2}/, `/${code}`)
-  router.push(path)
-}
 </script>
 
 <template>

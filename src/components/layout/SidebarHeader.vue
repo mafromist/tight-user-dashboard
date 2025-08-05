@@ -1,34 +1,17 @@
 <script setup>
 import { computed } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-import { useLocaleStore } from '@/stores/locale'
-import i18n from '@/plugins/i18n'
+import { useLanguage } from '@/composables/switchLanguage'
+const { languages, changeLanguage } = useLanguage()
 
 const route = useRoute()
-const router = useRouter()
 const { t } = useI18n()
-const localeStore = useLocaleStore()
-
-const languages = [
-  { code: 'tr', label: '🇹🇷' },
-  { code: 'en', label: '🇬🇧' },
-  { code: 'de', label: '🇩🇪' },
-]
 
 const selectedLanguage = computed({
   get: () => route.params.locale,
   set: (value) => value,
 })
-
-const changeLanguage = (event) => {
-  const code = event.value
-  localeStore.setLocale(code)
-  i18n.global.locale.value = code
-
-  const path = route.fullPath.replace(/^\/[a-z]{2}/, `/${code}`)
-  router.push(path)
-}
 
 defineProps({
   isDarkTheme: Boolean,
@@ -49,7 +32,7 @@ defineProps({
           :options="languages"
           optionLabel="label"
           optionValue="code"
-          @change="changeLanguage"
+          @update:modelValue="changeLanguage"
           class="lg:tw-hidden tw-w-22"
           :pt="{
             root: { class: 'tw-border-none tw-bg-transparent' },
